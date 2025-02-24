@@ -3,6 +3,7 @@ package com.btea.shortlink.admin.controller;
 import com.btea.shortlink.admin.common.convention.result.Result;
 import com.btea.shortlink.admin.common.convention.result.Results;
 import com.btea.shortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import com.btea.shortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
 import com.btea.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.btea.shortlink.admin.dto.resp.ShortLinkGroupRespDTO;
 import com.btea.shortlink.admin.service.GroupService;
@@ -29,19 +30,25 @@ public class GroupController {
     }
 
     @GetMapping("/api/short-link/admin/v1/group")
-    public Result<List<ShortLinkGroupRespDTO>> listGroup(){
+    public Result<List<ShortLinkGroupRespDTO>> listGroup() {
         return Results.success(groupService.listGroup());
     }
 
     @PutMapping("/api/short-link/admin/v1/group")
-    public Result<Void> updateGroup(@RequestBody ShortLinkGroupUpdateReqDTO requestParam){
+    public Result<Void> updateGroup(@RequestBody ShortLinkGroupUpdateReqDTO requestParam) {
         groupService.updateGroup(requestParam);
         return Results.success();
     }
 
     @DeleteMapping("/api/short-link/admin/v1/group")
-    public Result<Void> deleteGroup(@RequestParam String gid){
+    public Result<Void> deleteGroup(@RequestParam String gid) {
         groupService.deleteGroup(gid);
+        return Results.success();
+    }
+
+    @PostMapping("/api/short-link/admin/v1/group/sort")
+    public Result<Void> sortGroup(@RequestBody List<ShortLinkGroupSortReqDTO> requestParam) {
+        groupService.sortGroup(requestParam);
         return Results.success();
     }
 }
