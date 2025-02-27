@@ -38,10 +38,10 @@ public interface ShortLinkRemoteService {
     /**
      * 修改短链接
      *
-     * @param requestParam
+     * @param requestParam 修改短链接请求参数
      */
     default void updateShortLink(ShortLinkUpdateRepDTO requestParam) {
-        String resultBodyStr = HttpUtil.post("http://127.0.0.1:8001/api/short-link/admin/v1/update", JSON.toJSONString(requestParam));
+        HttpUtil.post("http://127.0.0.1:8001/api/short-link/admin/v1/update", JSON.toJSONString(requestParam));
     }
 
     /**
