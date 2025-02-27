@@ -2,7 +2,7 @@ package com.btea.shortlink.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.btea.shortlink.admin.common.convention.result.Result;
-import com.btea.shortlink.admin.remote.dto.ShortLinkRemoteService;
+import com.btea.shortlink.admin.remote.ShortLinkRemoteService;
 import com.btea.shortlink.admin.remote.dto.req.ShortLinkCreateReqDTO;
 import com.btea.shortlink.admin.remote.dto.req.ShortLinkPageReqDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkCreateRespDTO;
