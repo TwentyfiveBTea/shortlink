@@ -2,9 +2,11 @@ package com.btea.shortlink.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.btea.shortlink.admin.common.convention.result.Result;
+import com.btea.shortlink.admin.common.convention.result.Results;
 import com.btea.shortlink.admin.remote.ShortLinkRemoteService;
 import com.btea.shortlink.admin.remote.dto.req.ShortLinkCreateReqDTO;
 import com.btea.shortlink.admin.remote.dto.req.ShortLinkPageReqDTO;
+import com.btea.shortlink.admin.remote.dto.req.ShortLinkUpdateRepDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkCreateRespDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkPageRespDTO;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,12 @@ public class ShortLinkController {
     @PostMapping("/api/short-link/admin/v1/create")
     public Result<ShortLinkCreateRespDTO> createShortLink(@RequestBody ShortLinkCreateReqDTO requestParam) {
         return shortLinkRemoteService.createShortLink(requestParam);
+    }
+
+    @PostMapping("/api/short-link/admin/v1/update")
+    public Result<Void> updateShortLink(@RequestBody ShortLinkUpdateRepDTO requestParam) {
+        shortLinkRemoteService.updateShortLink(requestParam);
+        return Results.success();
     }
 
     @GetMapping("/api/short-link/admin/v1/page")
