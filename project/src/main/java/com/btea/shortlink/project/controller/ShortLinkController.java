@@ -10,6 +10,8 @@ import com.btea.shortlink.project.dto.resp.ShortLinkCreateRespDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkPageRespDTO;
 import com.btea.shortlink.project.service.ShortLinkService;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,13 +28,18 @@ public class ShortLinkController {
 
     private final ShortLinkService shortLinkService;
 
+    @GetMapping("/{short-uri}")
+    public void restoreUrl(@PathVariable("short-uri") String shortUri, ServletRequest request, ServletResponse response) {
+        shortLinkService.restoreUrl(shortUri, request, response);
+    }
+
     @PostMapping("/api/short-link/v1/create")
     public Result<ShortLinkCreateRespDTO> createShortLink(@RequestBody ShortLinkCreateReqDTO requestParam) {
         return Results.success(shortLinkService.createShortLink(requestParam));
     }
 
     @PostMapping("/api/short-link/v1/update")
-    public Result<Void> updateShortLink(@RequestBody ShortLinkUpdateRepDTO requestParam){
+    public Result<Void> updateShortLink(@RequestBody ShortLinkUpdateRepDTO requestParam) {
         shortLinkService.updateShortLink(requestParam);
         return Results.success();
     }
@@ -43,7 +50,7 @@ public class ShortLinkController {
     }
 
     @GetMapping("/api/short-link/v1/count")
-    public Result<List<ShortLinkGroupCountQueryRespDTO>> listGroupShortLinkCount(@RequestParam("requestParam") List<String> requestParam){
+    public Result<List<ShortLinkGroupCountQueryRespDTO>> listGroupShortLinkCount(@RequestParam("requestParam") List<String> requestParam) {
         return Results.success(shortLinkService.listGroupShortLinkCount(requestParam));
     }
 }
