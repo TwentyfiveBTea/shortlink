@@ -24,6 +24,7 @@ import com.btea.shortlink.project.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkPageRespDTO;
 import com.btea.shortlink.project.service.ShortLinkService;
 import com.btea.shortlink.project.toolkit.HashUtil;
+import com.btea.shortlink.project.toolkit.LinkUtil;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
@@ -95,6 +96,12 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper, ShortLink
                 throw new ServiceException("短链接生成重复");
             }
         }
+        stringRedisTemplate.opsForValue().set(
+                fullShortUrl,
+                requestParam.getOriginUrl(),
+                LinkUtil.getLinkCacheValidDate(requestParam.getValidDate()),
+                TimeUnit.MILLISECONDS
+        );
         shortUriCreateCachePenetrationBloomFilter.add(fullShortUrl);
         return ShortLinkCreateRespDTO.builder()
                 .fullShortUrl("http://" + shortLinkDO.getFullShortUrl())
@@ -202,7 +209,7 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper, ShortLink
                     .eq(ShortLinkGotoDO::getFullShortUrl, fullShortUrl);
             ShortLinkGotoDO shortLinkGotoDO = shortLinkGotoMapper.selectOne(linkGotoDOQueryWrapper);
             if (shortLinkGotoDO == null) {
-                stringRedisTemplate.opsForValue().set(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, fullShortUrl), "-",30, TimeUnit.MINUTES);
+                stringRedisTemplate.opsForValue().set(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
                 // 严禁来说此处需要进行风控
                 return;
             }
