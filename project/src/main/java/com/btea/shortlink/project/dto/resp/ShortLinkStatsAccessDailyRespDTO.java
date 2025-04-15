@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * @Author: TwentyFiveBTea
  * @Date: 2025/4/14 12:45
@@ -19,7 +17,7 @@ public class ShortLinkStatsAccessDailyRespDTO {
      * 日期
      */
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date date;
+    private String date;
 
     /**
      * 访问量
