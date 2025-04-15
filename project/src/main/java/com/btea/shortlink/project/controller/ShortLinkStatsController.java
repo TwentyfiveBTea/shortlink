@@ -3,6 +3,7 @@ package com.btea.shortlink.project.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.btea.shortlink.project.common.convention.result.Result;
 import com.btea.shortlink.project.common.convention.result.Results;
+import com.btea.shortlink.project.dto.req.ShortLinkGroupStatsReqDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkStatsAccessRecodeReqDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkStatsReqDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkStatsAccessRecodeRespDTO;
@@ -26,6 +27,11 @@ public class ShortLinkStatsController {
     @GetMapping("/api/short-link/v1/stats")
     public Result<ShortLinkStatsRespDTO> shortLinkStats(ShortLinkStatsReqDTO requestParam) {
         return Results.success(shortLinkStatsService.oneShortLinkStats(requestParam));
+    }
+
+    @GetMapping("/api/short-link/v1/stats/gruop")
+    public Result<ShortLinkStatsRespDTO> groupShortLinkStats(ShortLinkGroupStatsReqDTO requestParam) {
+        return Results.success(shortLinkStatsService.groupShortLinkStats(requestParam));
     }
 
     @GetMapping("/api/short-link/v1/stats/access-record")
