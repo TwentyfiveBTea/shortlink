@@ -2,6 +2,7 @@ package com.btea.shortlink.project.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.btea.shortlink.project.dao.entity.LinkNetworkStatsDO;
+import com.btea.shortlink.project.dto.req.ShortLinkGroupStatsReqDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkStatsReqDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
