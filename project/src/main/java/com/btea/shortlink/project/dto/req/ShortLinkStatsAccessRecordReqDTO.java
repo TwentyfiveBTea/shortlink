@@ -10,7 +10,7 @@ import lombok.Data;
  * @Description: 短链接监控访问记录请求参数
  */
 @Data
-public class ShortLinkStatsAccessRecodeReqDTO extends Page<LinkAccessLogsDO> {
+public class ShortLinkStatsAccessRecordReqDTO extends Page<LinkAccessLogsDO> {
 
     /**
      * 完整短链接

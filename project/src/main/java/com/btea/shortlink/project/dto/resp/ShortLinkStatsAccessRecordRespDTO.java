@@ -1,4 +1,4 @@
-package com.btea.shortlink.admin.remote.dto.resp;
+package com.btea.shortlink.project.dto.resp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShortLinkStatsAccessRecodeRespDTO {
+public class ShortLinkStatsAccessRecordRespDTO {
 
     /**
      * 访客类型
