@@ -3,10 +3,11 @@ package com.btea.shortlink.project.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.btea.shortlink.project.common.convention.result.Result;
 import com.btea.shortlink.project.common.convention.result.Results;
+import com.btea.shortlink.project.dto.req.ShortLinkGroupStatsAccessRecordReqDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkGroupStatsReqDTO;
-import com.btea.shortlink.project.dto.req.ShortLinkStatsAccessRecodeReqDTO;
+import com.btea.shortlink.project.dto.req.ShortLinkStatsAccessRecordReqDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkStatsReqDTO;
-import com.btea.shortlink.project.dto.resp.ShortLinkStatsAccessRecodeRespDTO;
+import com.btea.shortlink.project.dto.resp.ShortLinkStatsAccessRecordRespDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkStatsRespDTO;
 import com.btea.shortlink.project.service.ShortLinkStatsService;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,12 @@ public class ShortLinkStatsController {
     }
 
     @GetMapping("/api/short-link/v1/stats/access-record")
-    public Result<IPage<ShortLinkStatsAccessRecodeRespDTO>> shortLinkStatsAccessRecode(ShortLinkStatsAccessRecodeReqDTO requestParam) {
+    public Result<IPage<ShortLinkStatsAccessRecordRespDTO>> shortLinkStatsAccessRecode(ShortLinkStatsAccessRecordReqDTO requestParam) {
         return Results.success(shortLinkStatsService.shortLinkStatsAccessRecode(requestParam));
+    }
+
+    @GetMapping("/api/short-link/v1/stats/access-record/group")
+    public Result<IPage<ShortLinkStatsAccessRecordRespDTO>> groupShortLinkStatsAccessRecord(ShortLinkGroupStatsAccessRecordReqDTO requestParam) {
+        return Results.success(shortLinkStatsService.groupShortLinkStatsAccessRecord(requestParam));
     }
 }

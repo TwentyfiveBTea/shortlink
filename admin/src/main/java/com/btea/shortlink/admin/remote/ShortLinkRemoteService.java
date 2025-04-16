@@ -8,12 +8,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.btea.shortlink.admin.common.convention.result.Result;
 import com.btea.shortlink.admin.dto.req.RecycleBinSaveReqDTO;
 import com.btea.shortlink.admin.dto.req.ShortLinkStatsAccessRecodeReqDTO;
-import com.btea.shortlink.admin.dto.resp.ShortLinkStatsAccessRecodeRespDTO;
 import com.btea.shortlink.admin.remote.dto.req.*;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkCreateRespDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkPageRespDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkStatsReqDTO;
+import com.btea.shortlink.project.dto.resp.ShortLinkStatsAccessRecordRespDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkStatsRespDTO;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -165,11 +165,26 @@ public interface ShortLinkRemoteService {
      * @param requestParam 访问短链接监控访问记录请求参数
      * @return 短链接监控访问记录信息
      */
-    default Result<IPage<ShortLinkStatsAccessRecodeRespDTO>> shortLinkStatsAccessRecode(ShortLinkStatsAccessRecodeReqDTO requestParam) {
+    default Result<IPage<ShortLinkStatsAccessRecordRespDTO>> shortLinkStatsAccessRecord(ShortLinkStatsAccessRecodeReqDTO requestParam) {
         Map<String, Object> stringObjectMap = BeanUtil.beanToMap(requestParam, false, true);
         stringObjectMap.remove("order");
         stringObjectMap.remove("records");
         String resultBodyStr = HttpUtil.get("http://127.0.0.1:8001/api/short-link/v1/stats/access-record", stringObjectMap);
+        return JSON.parseObject(resultBodyStr, new TypeReference<>() {
+        });
+    }
+
+    /**
+     * 访问分组短链接指定时间内监控访问记录数据
+     *
+     * @param requestParam 访问分组短链接监控访问记录请求参数
+     * @return 分组短链接监控访问记录信息
+     */
+    default Result<IPage<ShortLinkStatsAccessRecordRespDTO>> groupShortLinkStatsAccessRecord(ShortLinkGroupStatsAccessRecordReqDTO requestParam) {
+        Map<String, Object> stringObjectMap = BeanUtil.beanToMap(requestParam, false, true);
+        stringObjectMap.remove("orders");
+        stringObjectMap.remove("records");
+        String resultBodyStr = HttpUtil.get("http://127.0.0.1:8001/api/short-link/v1/stats/access-record/group", stringObjectMap);
         return JSON.parseObject(resultBodyStr, new TypeReference<>() {
         });
     }
