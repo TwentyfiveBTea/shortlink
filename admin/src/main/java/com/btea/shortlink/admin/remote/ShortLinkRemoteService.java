@@ -9,6 +9,7 @@ import com.btea.shortlink.admin.common.convention.result.Result;
 import com.btea.shortlink.admin.dto.req.RecycleBinSaveReqDTO;
 import com.btea.shortlink.admin.dto.req.ShortLinkStatsAccessRecodeReqDTO;
 import com.btea.shortlink.admin.remote.dto.req.*;
+import com.btea.shortlink.admin.remote.dto.resp.ShortLinkBatchCreateRespDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkCreateRespDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import com.btea.shortlink.admin.remote.dto.resp.ShortLinkPageRespDTO;
