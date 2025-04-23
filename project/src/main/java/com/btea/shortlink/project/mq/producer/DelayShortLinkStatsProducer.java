@@ -1,4 +1,4 @@
-package com.btea.shortlink.project.mq.consumer;
+package com.btea.shortlink.project.mq.producer;
 
 import com.btea.shortlink.project.dto.biz.ShortLinkStatsRecordDTO;
 import lombok.RequiredArgsConstructor;
