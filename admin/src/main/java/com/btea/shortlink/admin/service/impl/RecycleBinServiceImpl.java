@@ -39,6 +39,6 @@ public class RecycleBinServiceImpl implements RecycleBinService {
         if (CollUtil.isEmpty(groupDOList)) {
             throw new ServiceException("用户无分组信息");
         }
-        return shortLinkActualRemoteService.pageRecycleBinShortLink(requestParam);
+        return shortLinkActualRemoteService.pageRecycleBinShortLink(requestParam.getGidList(), requestParam.getCurrent(), requestParam.getSize());
     }
 }
