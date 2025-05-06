@@ -1,11 +1,10 @@
 package com.btea.shortlink.admin.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.btea.shortlink.admin.common.convention.result.Result;
 import com.btea.shortlink.admin.common.convention.result.Results;
 import com.btea.shortlink.admin.dto.req.RecycleBinSaveReqDTO;
 import com.btea.shortlink.admin.remote.ShortLinkActualRemoteService;
-import com.btea.shortlink.admin.remote.ShortLinkRemoteService;
 import com.btea.shortlink.admin.remote.dto.req.RecycleBinRecoverReqDTO;
 import com.btea.shortlink.admin.remote.dto.req.RecycleBinRemoveReqDTO;
 import com.btea.shortlink.admin.remote.dto.req.ShortLinkRecycleBinPageReqDTO;
@@ -36,8 +35,8 @@ public class RecycleBinController {
     }
 
     @GetMapping("/api/short-link/admin/v1/recycle-bin/page")
-    public Result<IPage<ShortLinkPageRespDTO>> pageShortLink(ShortLinkRecycleBinPageReqDTO requestParam) {
-        return shortLinkActualRemoteService.pageRecycleBinShortLink(requestParam);
+    public Result<Page<ShortLinkPageRespDTO>> pageShortLink(ShortLinkRecycleBinPageReqDTO requestParam) {
+        return recycleBinService.pageRecycleBinShortLink(requestParam);
     }
 
     @PostMapping("/api/short-link/admin/v1/recycle-bin/recover")
@@ -47,7 +46,7 @@ public class RecycleBinController {
     }
 
     @PostMapping("/api/short-link/admin/v1/recycle-bin/remove")
-    public Result<Void> removeRecycleBin(@RequestBody RecycleBinRemoveReqDTO requestParam){
+    public Result<Void> removeRecycleBin(@RequestBody RecycleBinRemoveReqDTO requestParam) {
         shortLinkActualRemoteService.removeRecycleBin(requestParam);
         return Results.success();
     }
