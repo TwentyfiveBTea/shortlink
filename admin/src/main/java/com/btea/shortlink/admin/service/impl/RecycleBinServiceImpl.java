@@ -23,7 +23,7 @@ import java.util.List;
  * @Date: 2025/3/4 11:13
  * @Description: URL 回收站接口层实现类
  */
-@Service
+@Service(value = "recycleBinServiceImplByAdmin")
 @RequiredArgsConstructor
 public class RecycleBinServiceImpl implements RecycleBinService {
 

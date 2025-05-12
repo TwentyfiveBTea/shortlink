@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date: 2025/02/05 21:14
  * @Description: 布隆过滤器配置
  */
-@Configuration
+@Configuration(value = "rBloomFilterConfigurationByAdmin")
 public class RBloomFilterConfiguration {
 
     /**

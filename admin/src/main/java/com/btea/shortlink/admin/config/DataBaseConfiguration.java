@@ -11,13 +11,14 @@ import org.springframework.context.annotation.Configuration;
  * @Date: 2025/2/26 14:12
  * @Description: 数据库配置
  */
-@Configuration
+@Configuration(value = "dataBaseConfigurationByAdmin")
 public class DataBaseConfiguration {
     /**
      * 分页插件
      */
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    @ConditionalOnBean
+    public MybatisPlusInterceptor mybatisPlusInterceptorByAdmin() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         return interceptor;
