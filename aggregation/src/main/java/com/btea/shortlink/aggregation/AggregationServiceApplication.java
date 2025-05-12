@@ -13,8 +13,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = {
         "com.btea.shortlink.admin",
-        "com.btea.shortlink.project",
-        "com.btea.shortlink.aggregation"
+        "com.btea.shortlink.project"
 })
 @MapperScan(value = {
         "com.btea.shortlink.project.dao.mapper",
