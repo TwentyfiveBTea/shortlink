@@ -20,15 +20,11 @@ import java.util.Date;
 @NoArgsConstructor
 @TableName("t_link_access_stats")
 public class LinkAccessStatsDO extends BaseDO {
+
     /**
      * id
      */
     private Long id;
-
-    /**
-     * 分组标识
-     */
-    private String gid;
 
     /**
      * 完整短链接
