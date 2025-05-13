@@ -132,6 +132,7 @@ public interface ShortLinkActualRemoteService {
      *
      * @param fullShortUrl 完整短链接
      * @param gid          分组标识
+     * @param enableStatus 启用标识
      * @param startDate    开始时间
      * @param endDate      结束时间
      * @return 短链接监控信息
@@ -139,6 +140,7 @@ public interface ShortLinkActualRemoteService {
     @GetMapping("/api/short-link/v1/stats")
     Result<ShortLinkStatsRespDTO> oneShortLinkStats(@RequestParam("fullShortUrl") String fullShortUrl,
                                                     @RequestParam("gid") String gid,
+                                                    @RequestParam("enableStatus") Integer enableStatus,
                                                     @RequestParam("startDate") String startDate,
                                                     @RequestParam("endDate") String endDate);
 
