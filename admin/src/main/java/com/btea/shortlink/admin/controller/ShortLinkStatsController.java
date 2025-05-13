@@ -57,9 +57,7 @@ public class ShortLinkStatsController {
                 requestParam.getGid(),
                 requestParam.getStartDate(),
                 requestParam.getEndDate(),
-                requestParam.getEnableStatus(),
-                requestParam.getCurrent(),
-                requestParam.getSize()
+                requestParam.getEnableStatus()
         );
     }
 
@@ -72,6 +70,7 @@ public class ShortLinkStatsController {
                 requestParam.getGid(),
                 requestParam.getStartDate(),
                 requestParam.getEndDate(),
+                requestParam.getEnableStatus(),
                 requestParam.getCurrent(),
                 requestParam.getSize()
         );
