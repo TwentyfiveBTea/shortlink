@@ -6,6 +6,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.TypeReference;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.btea.shortlink.admin.common.convention.result.Result;
+import com.btea.shortlink.admin.config.OpenFeignConfiguration;
 import com.btea.shortlink.admin.dto.req.RecycleBinSaveReqDTO;
 import com.btea.shortlink.admin.dto.req.ShortLinkStatsAccessRecodeReqDTO;
 import com.btea.shortlink.admin.remote.dto.req.*;
@@ -16,6 +17,7 @@ import com.btea.shortlink.admin.remote.dto.resp.ShortLinkPageRespDTO;
 import com.btea.shortlink.project.dto.req.ShortLinkStatsReqDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkStatsAccessRecordRespDTO;
 import com.btea.shortlink.project.dto.resp.ShortLinkStatsRespDTO;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
@@ -27,6 +29,11 @@ import java.util.Map;
  * @Date: 2025/2/26 15:13
  * @Description: 短链接中台远程调用服务
  */
+@FeignClient(
+        value = "short-link-project",
+        url = "${aggregation.remote-url:}",
+        configuration = OpenFeignConfiguration.class
+)
 public interface ShortLinkRemoteService {
 
     /**
